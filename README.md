@@ -25,7 +25,7 @@ xdg-open index.html # Linux
 
 ## 📖 About
 
-This presentation was created for the **Software Alliance Chapter Meeting Stuttgart** and provides IT decision makers and developers with a practical overview of AI-based software development in 2025.
+This presentation was created for the **Softwareallianz Chapter Meeting Stuttgart** and provides IT decision makers and developers with a practical overview of AI-based software development in 2025.
 
 **Target Audience:**
 - IT Decision Makers
@@ -118,7 +118,7 @@ Please attribute the original author (Frederik Wystup) when using or modifying t
 
 - Built with [Reveal.js](https://revealjs.com/)
 - Inspired by the growing community around professional AI-assisted development
-- Thanks to the Software Alliance Stuttgart for the opportunity to present
+- Thanks to the Softwareallianz Stuttgart for the opportunity to present
 
 ---
 
