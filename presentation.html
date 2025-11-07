@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Quo der KI-basierten Software-Entwicklung</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.css" id="theme">
+
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/monokai.css">
+
+    <style>
+        /* Custom Dark Theme Styling */
+        :root {
+            --r-background-color: #0a0e27;
+            --r-main-color: #e8e8e8;
+            --r-heading-color: #00d4ff;
+            --r-link-color: #42b883;
+            --r-link-color-hover: #35a372;
+            --r-selection-background-color: #00d4ff;
+            --r-selection-color: #0a0e27;
+        }
+
+        .reveal {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 32px;
+        }
+
+        .reveal h1 {
+            color: var(--r-heading-color);
+            text-transform: none;
+            font-weight: 700;
+            margin-bottom: 0.5em;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .reveal h2 {
+            color: var(--r-heading-color);
+            text-transform: none;
+            font-weight: 600;
+            margin-bottom: 0.8em;
+        }
+
+        .reveal h3 {
+            color: #42b883;
+            text-transform: none;
+            font-weight: 500;
+        }
+
+        .reveal section {
+            text-align: left;
+            padding: 20px;
+        }
+
+        .reveal .center-content {
+            text-align: center;
+        }
+
+        .reveal ul, .reveal ol {
+            margin: 1em 0;
+        }
+
+        .reveal li {
+            margin: 0.5em 0;
+        }
+
+        .reveal strong {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .reveal em {
+            color: #42b883;
+        }
+
+        .reveal code {
+            background: #1e1e1e;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #42b883;
+        }
+
+        .reveal pre {
+            margin: 1em 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .reveal pre code {
+            padding: 20px;
+            border-radius: 8px;
+            max-height: 500px;
+        }
+
+        .reveal .speaker-info {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 2em;
+        }
+
+        .reveal .highlight-box {
+            background: rgba(0, 212, 255, 0.1);
+            border-left: 4px solid var(--r-heading-color);
+            padding: 1em;
+            margin: 1em 0;
+            border-radius: 4px;
+        }
+
+        .reveal .evolution-step {
+            display: inline-block;
+            padding: 0.5em 1em;
+            margin: 0.3em;
+            background: rgba(66, 184, 131, 0.2);
+            border-radius: 8px;
+            border: 2px solid #42b883;
+        }
+
+        .reveal .demo-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.3em 0.8em;
+            border-radius: 20px;
+            font-size: 0.7em;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 0.5em;
+        }
+
+        .reveal .number-42 {
+            font-size: 5em;
+            color: #00d4ff;
+            font-weight: bold;
+            text-align: center;
+            margin: 1em 0;
+            text-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .reveal .key-takeaway {
+            background: linear-gradient(135deg, rgba(66, 184, 131, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%);
+            padding: 1.5em;
+            border-radius: 12px;
+            margin: 1em 0;
+            border: 2px solid #42b883;
+        }
+
+        .reveal .contact-info {
+            font-size: 0.8em;
+            margin-top: 2em;
+        }
+
+        .reveal .small-text {
+            font-size: 0.7em;
+            line-height: 1.4;
+        }
+
+        .reveal .columns {
+            display: flex;
+            gap: 2em;
+        }
+
+        .reveal .column {
+            flex: 1;
+        }
+
+        /* Progress bar styling */
+        .reveal .progress {
+            background: rgba(0, 0, 0, 0.2);
+            color: #00d4ff;
+        }
+
+        /* Controls styling */
+        .reveal .controls {
+            color: #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1: Title -->
+            <section class="center-content" data-transition="zoom">
+                <h1>Status Quo der KI-basierten Software-Entwicklung</h1>
+                <p style="font-size: 0.8em; margin-top: 2em;">Chapter Meeting Stuttgart - Software Alliance</p>
+                <div class="speaker-info">
+                    <p><strong>Frederik Wystup</strong></p>
+                    <p>MeiLuft GmbH & Co. KG</p>
+                </div>
+                <aside class="notes">
+                    Begrüßung, kurze Vorstellung. Erwähnen dass es ein praxisorientierter Vortrag mit Live-Demos wird.
+                    Zielgruppe: IT-Entscheider und technische Leads aus dem Mittelstand.
+                </aside>
+            </section>
+
+            <!-- Slide 2: Abstract -->
+            <section data-transition="slide">
+                <h2>Worum geht es heute?</h2>
+                <ul>
+                    <li class="fragment">AI-Coding-Tools entwickeln sich <strong>monatlich</strong> weiter</li>
+                    <li class="fragment">Zentrale Frage: <em>Wie setzen wir diese strategisch ein?</em></li>
+                    <li class="fragment">Von der Idee zur App in Minuten - aber <strong>professionell</strong></li>
+                    <li class="fragment">Context-Engineering ist <strong>entscheidender</strong> als der Code selbst</li>
+                    <li class="fragment">KI als "Junior-Entwickler" im Team</li>
+                </ul>
+                <aside class="notes">
+                    Abstract vorstellen. Betonen: Nicht oberflächliches ChatGPT-Prompting, sondern professionelle Prozesse.
+                    Focus auf Entscheider: Experimentierfreude fördern, Kosten senken, Risiken steuern.
+                </aside>
+            </section>
+
+            <!-- Slide 3: Speaker Bio -->
+            <section data-transition="slide">
+                <h2>Über mich</h2>
+                <div class="columns">
+                    <div class="column">
+                        <h3>Frederik Wystup</h3>
+                        <ul style="font-size: 0.8em;">
+                            <li>Ingenieur & Unternehmer</li>
+                            <li>Mitgründer MeiLuft GmbH & Co. KG</li>
+                            <li>Wissenschaftlicher Betreuer DHBW Mosbach</li>
+                            <li>25+ Jahre IT-Erfahrung</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>Schwerpunkte</h3>
+                        <ul style="font-size: 0.8em;">
+                            <li>Elektronenoptische Sensoren</li>
+                            <li>KI für Steuerung & Bildauswertung</li>
+                            <li>KI-gestützte Entwicklung</li>
+                            <li>Open-Source AI-Coding Tools</li>
+                        </ul>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Kurze Vorstellung. Expertise: Verbindung von technischer Tiefe mit unternehmerischer Praxis.
+                    MeiLuft: Innovative Nanopartikel-Sensoren. Speaker auf Entwicklerkonferenzen.
+                </aside>
+            </section>
+
+            <!-- Slide 4: Zielgruppe -->
+            <section data-transition="slide">
+                <h2>Typische Herausforderungen</h2>
+                <p style="font-size: 0.9em; margin-bottom: 1.5em;">
+                    Die Sie vielleicht kennen...
+                </p>
+                <ul>
+                    <li class="fragment"><strong>Teure Nachbesserungen</strong> in Softwareprojekten</li>
+                    <li class="fragment"><strong>Team-Skalierung</strong> - Die richtigen Leute zur richtigen Zeit</li>
+                    <li class="fragment"><strong>Integration neuer Technologien</strong> - KI, Cloud, DevOps</li>
+                    <li class="fragment"><strong>Kostenkontrolle</strong> bei steigender Komplexität</li>
+                    <li class="fragment"><strong>Geschwindigkeit</strong> - Time-to-Market vs. Qualität</li>
+                    <li class="fragment"><strong>Erwartungshaltung</strong> - "Kann man das nicht mit ChatGPT bauen?"</li>
+                </ul>
+                <p class="fragment" style="margin-top: 1.5em; font-style: italic; color: #42b883;">
+                    → AI-Coding kann hier helfen - wenn man es richtig einsetzt
+                </p>
+                <aside class="notes">
+                    Herausforderungen die typisch für IT-Dienstleister und Produktentwicklung sind.
+                    Keine spezifischen Annahmen über die Teilnehmer - lässt Raum für verschiedene Backgrounds.
+                    Die "ChatGPT"-Frage kennen wahrscheinlich viele von ihren Kunden/Management.
+                </aside>
+            </section>
+
+            <!-- Slide 5: Der "42" Einstieg -->
+            <section data-transition="zoom">
+                <h2>Die Antwort auf alles...</h2>
+                <div class="number-42">42</div>
+                <p class="fragment center-content" style="font-size: 1.2em; color: #42b883;">
+                    Ohne <strong>Context</strong> bekommt man nur "42"
+                </p>
+                <aside class="notes">
+                    DEMO-Einstieg: Zeigen wie ein Prompt ohne Context nur "42" liefert.
+                    Mit richtigem Context: Vollständige, professionelle Lösung.
+                    Hitchhiker's Guide Referenz - aber ernste Message: Context > Code!
+                </aside>
+            </section>
+
+            <!-- Slide 6: Context ist König -->
+            <section data-transition="slide">
+                <h2>Warum Context wichtiger ist als Code</h2>
+                <div class="highlight-box">
+                    <p><strong>Context Engineering</strong> = Die Kunst, der KI den richtigen Kontext zu geben</p>
+                </div>
+                <ul>
+                    <li class="fragment">Projekt-Struktur & Architektur-Entscheidungen</li>
+                    <li class="fragment">Coding-Standards & Best Practices</li>
+                    <li class="fragment">Testing-Anforderungen (TDD, Coverage, E2E)</li>
+                    <li class="fragment">Security & Quality Gates</li>
+                    <li class="fragment">Business-Domain & Fachlogik</li>
+                </ul>
+                <p class="fragment" style="margin-top: 1em; font-style: italic;">
+                    → Context-Dokumentation ist <strong>wertvoller</strong> als der generierte Code!
+                </p>
+                <aside class="notes">
+                    Context Engineering ist der Schlüssel. KI braucht Projekt-Kontext, nicht nur Code-Snippets.
+                    Dokumentation von Prompts, Context, Tool-Aufrufen senkt Kosten und Risiken.
+                </aside>
+            </section>
+
+            <!-- Slide 7: Evolution - Vibe Coding -->
+            <section data-transition="convex">
+                <h2>Die Evolution des AI-Codings</h2>
+                <h3 style="color: #42b883;">Stufe 1: Vibe Coding</h3>
+                <div class="evolution-step fragment">ChatGPT</div>
+                <div class="evolution-step fragment">Gemini</div>
+                <div class="evolution-step fragment">Grok (X.AI)</div>
+                <div class="evolution-step fragment">MS Copilot</div>
+                <ul style="margin-top: 1em;">
+                    <li class="fragment">Rein browser-basiert, kein Setup nötig</li>
+                    <li class="fragment">Schnell & einfach - Code per Copy & Paste</li>
+                    <li class="fragment">Gut für Prototypen & Experimente</li>
+                    <li class="fragment"><strong>Aber:</strong> "App in 5 Minuten" ≠ Produktionsreife</li>
+                </ul>
+                <div class="fragment highlight-box" style="margin-top: 1em;">
+                    <p><em>"Warum ist Software eigentlich so teuer? Man kann doch jetzt alles in 5 Minuten bauen..."</em></p>
+                    <p style="font-size: 0.8em;">→ Die Frage, die Ihre Kunden stellen</p>
+                </div>
+                <aside class="notes">
+                    DEMO: ChatGPT/Gemini zeigen - schnell, aber oberflächlich.
+                    Reine Browser-Lösungen: Code generieren, kopieren, manuell einfügen.
+                    Kunden sehen solche Demos und fragen: Warum dauert unsere Software so lange?
+                    Vibe Coding = Guter Einstieg, aber nicht professionell für Production.
+                </aside>
+            </section>
+
+            <!-- Slide 8: Evolution - Platforms -->
+            <section data-transition="convex">
+                <h2>Die Evolution des AI-Codings</h2>
+                <h3 style="color: #42b883;">Stufe 2: Integrierte Plattformen</h3>
+                <div class="evolution-step fragment">bolt.new</div>
+                <div class="evolution-step fragment">Google AI Studio</div>
+                <div class="evolution-step fragment">Replit</div>
+                <ul style="margin-top: 1em;">
+                    <li class="fragment">Integrierte Entwicklungsumgebung im Browser</li>
+                    <li class="fragment">Direkte Preview & Deployment</li>
+                    <li class="fragment">Noch immer primär "Vibe Coding"</li>
+                    <li class="fragment"><strong>Limitation:</strong> Vendor Lock-in, wenig Kontrolle</li>
+                </ul>
+                <aside class="notes">
+                    bolt.new zeigen: Beeindruckend, aber immer noch Vibe-Level.
+                    Google AI Studio: Gut für Experimente.
+                    Problem: Keine professionelle Governance, kein Testing, keine echte Kontrolle.
+                </aside>
+            </section>
+
+            <!-- Slide 9: Evolution - Agentic Coding -->
+            <section data-transition="convex">
+                <h2>Die Evolution des AI-Codings</h2>
+                <h3 style="color: #00d4ff;">Stufe 3: Agentic Coding 🎯</h3>
+                <div class="evolution-step fragment" style="border-color: #00d4ff; background: rgba(0, 212, 255, 0.2);">Claude Code</div>
+                <div class="evolution-step fragment" style="border-color: #00d4ff; background: rgba(0, 212, 255, 0.2);">Gemini CLI</div>
+                <div class="evolution-step fragment" style="border-color: #00d4ff; background: rgba(0, 212, 255, 0.2);">GitHub Copilot Workspace</div>
+                <ul style="margin-top: 1em;">
+                    <li class="fragment"><strong>Tool-Zugriff:</strong> KI kann Dateien lesen, schreiben, testen, committen</li>
+                    <li class="fragment"><strong>Context-Aware:</strong> Versteht Projekt-Struktur & Abhängigkeiten</li>
+                    <li class="fragment"><strong>Iterativ:</strong> Plan → Implement → Test → Fix-Zyklen</li>
+                    <li class="fragment"><strong>Governance:</strong> Hooks, Guards, Human-in-the-Loop</li>
+                </ul>
+                <p class="fragment" style="margin-top: 1em; color: #00d4ff; font-weight: bold;">
+                    → Das ist <strong>professionelle</strong> AI-gestützte Entwicklung
+                </p>
+                <aside class="notes">
+                    Hier wird es professionell! Agentic = KI als Agent mit Tools.
+                    Claude Code CLI: Kann lesen, schreiben, bash ausführen, git nutzen.
+                    Wichtig: Immer noch Human-in-the-Loop, aber massiv produktiver.
+                </aside>
+            </section>
+
+            <!-- Slide 10: Vendor Lock-in vermeiden -->
+            <section data-transition="slide">
+                <h2>Vendor Lock-in vermeiden</h2>
+                <p style="font-size: 0.9em; margin-bottom: 1.5em; color: #888;">
+                    Multi-Tool-Strategie für professionelle Entwicklung
+                </p>
+                <div class="highlight-box" style="margin-bottom: 1.5em; background: rgba(255, 82, 82, 0.15);">
+                    <h3 style="color: #ff5252; margin-bottom: 0.5em;">⚠️ Das Problem</h3>
+                    <ul style="font-size: 0.85em;">
+                        <li class="fragment"><strong>Claude Code</strong> ist aktuell sehr gut - aber alles hängt an Anthropic</li>
+                        <li class="fragment">Risiken: Server-Ausfälle, API-Änderungen, Preisänderungen, Verfügbarkeit</li>
+                        <li class="fragment">Abhängigkeit von einem einzigen Anbieter = Geschäftsrisiko</li>
+                    </ul>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div style="background: rgba(66, 184, 131, 0.2); padding: 1em; border-radius: 8px;">
+                            <h3 style="font-size: 0.9em; color: #42b883; margin-bottom: 0.5em;">✅ Multi-Tool-Ansatz</h3>
+                            <ul style="font-size: 0.75em;">
+                                <li>Claude Code, Gemini CLI</li>
+                                <li>Continue, Cline, Aider</li>
+                                <li>OpenAI Codex</li>
+                                <li>Immer Alternativen parat</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div style="background: rgba(0, 212, 255, 0.2); padding: 1em; border-radius: 8px;">
+                            <h3 style="font-size: 0.9em; color: #00d4ff; margin-bottom: 0.5em;">🖥️ Lokale LLMs</h3>
+                            <ul style="font-size: 0.75em;">
+                                <li>Qwen, DeepSeek, Llama</li>
+                                <li>Fast so gut wie Cloud-LLMs</li>
+                                <li>Volle Kontrolle & Datenschutz</li>
+                                <li>GPU-Hardware nötig (vor Ort oder gemietet)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Wichtiger Punkt für IT-Entscheider: Vendor Lock-in Risiko.
+                    Claude Code ist aktuell sehr gut, aber Abhängigkeit ist problematisch.
+                    XaresAICoder unterstützt mehrere Tools - Flexibilität und Ausfallsicherheit.
+                    Lokale LLMs sind inzwischen sehr gut - nicht ganz Cloud-Level, aber nah dran.
+                    Hardware: RunPod, Vast.ai oder eigene GPU-Server.
+                </aside>
+            </section>
+
+            <!-- Slide 11: Demo 1 - XaresAICoder -->
+            <section data-transition="slide">
+                <h2><span class="demo-badge">DEMO</span>XaresAICoder</h2>
+                <p style="font-size: 0.9em;">Open-Source Tool für professionelle AI-Coding Sandboxes</p>
+                <div class="highlight-box">
+                    <p><strong>Per Knopfdruck:</strong></p>
+                    <ul>
+                        <li>Isolierte Docker-Entwicklungsumgebung</li>
+                        <li>Vorinstallierte Tools (Git, Node, Python, etc.)</li>
+                        <li>Claude Code / Gemini CLI Integration</li>
+                        <li>Sichere Sandbox für Experimente</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 1em; font-size: 0.8em;">
+                    <a href="https://github.com/dg1001/xaresaicoder" style="color: #42b883;">github.com/dg1001/xaresaicoder</a>
+                </p>
+                <aside class="notes">
+                    LIVE DEMO: XaresAICoder starten.
+                    Zeigen: Ein Button → Komplette Entwicklungsumgebung ready.
+                    Vorteil: Reproducible, isolated, professional setup.
+                    Perfekt für Teams die experimentieren wollen ohne Production zu gefährden.
+                </aside>
+            </section>
+
+            <!-- Slide 11: Demo 2 - hn-gems -->
+            <section data-transition="slide">
+                <h2><span class="demo-badge">DEMO</span>hn-gems Projekt</h2>
+                <p style="font-size: 0.9em;">Bestehende Projekte mit AI weiterentwickeln</p>
+                <div class="highlight-box">
+                    <p><strong>Aufgabe:</strong> Deutsche Audio-Version zum bestehenden Podcast hinzufügen</p>
+                    <ul style="font-size: 0.85em;">
+                        <li class="fragment">Projekt in XaresAICoder laden</li>
+                        <li class="fragment">Claude Code mit Context versorgen</li>
+                        <li class="fragment">Implementierung: Text-to-Speech für Deutsch</li>
+                        <li class="fragment">Testing & Iteration</li>
+                        <li class="fragment">Git Commit mit AI-generierter Message</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 1em; font-size: 0.8em;">
+                    <a href="https://github.com/DG1001/hn-gems" style="color: #42b883;">github.com/DG1001/hn-gems</a>
+                </p>
+                <aside class="notes">
+                    LIVE DEMO: hn-gems Projekt öffnen.
+                    Zeigen: Wie man bestehendes Projekt erweitert.
+                    Wichtig: Context geben (was macht das Projekt, welche Architektur, wo ist Audio-Logik).
+                    AI implementiert, testet, iteriert. Human reviewed am Ende.
+                </aside>
+            </section>
+
+            <!-- Slide 12: BMAD-METHOD -->
+            <section data-transition="slide">
+                <h2>BMAD-METHOD</h2>
+                <p style="font-size: 0.9em; font-style: italic; color: #42b883;">"Breakthrough Method for Agile AI Driven Development"</p>
+                <div class="columns" style="margin-top: 1em; margin-bottom: 1em;">
+                    <div class="column" style="text-align: center;">
+                        <div style="background: rgba(66, 184, 131, 0.2); padding: 1em; border-radius: 8px;">
+                            <h3 style="font-size: 1.5em; color: #42b883;">19+ Agents</h3>
+                            <p style="font-size: 0.7em;">Spezialisierte KI-Personas</p>
+                        </div>
+                    </div>
+                    <div class="column" style="text-align: center;">
+                        <div style="background: rgba(0, 212, 255, 0.2); padding: 1em; border-radius: 8px;">
+                            <h3 style="font-size: 1.5em; color: #00d4ff;">50+ Workflows</h3>
+                            <p style="font-size: 0.7em;">Guided Prozesse</p>
+                        </div>
+                    </div>
+                    <div class="column" style="text-align: center;">
+                        <div style="background: rgba(255, 193, 7, 0.2); padding: 1em; border-radius: 8px;">
+                            <h3 style="font-size: 1.5em; color: #ffc107;">20.8k ⭐</h3>
+                            <p style="font-size: 0.7em;">GitHub Stars</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <h3 style="color: #00d4ff; margin-bottom: 0.5em;">Scale-Adaptive Intelligence</h3>
+                    <ul style="font-size: 0.85em;">
+                        <li><strong>Quick Flow:</strong> Bug Fixes, Small Features</li>
+                        <li><strong>BMad Method:</strong> Products, Platforms (PRD + Architektur + UX)</li>
+                        <li><strong>Enterprise:</strong> Compliance, Security, DevOps</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 1em; font-size: 0.7em;">
+                    <a href="https://github.com/bmad-code-org/BMAD-METHOD" style="color: #42b883;">github.com/bmad-code-org/BMAD-METHOD</a>
+                </p>
+                <aside class="notes">
+                    BMAD = Framework mit spezialisierten Agenten und Workflows.
+                    C.O.R.E. Philosophie: Collaboration, Optimized, Reflection, Engine.
+                    Skaliert automatisch von Bug-Fix bis Enterprise-Lösung.
+                    Document Sharding spart 90%+ Tokens durch Just-in-time-Kontext.
+                </aside>
+            </section>
+
+            <!-- Slide 13: Ralph -->
+            <section data-transition="slide">
+                <h2>Ralph - Die While-Loop Technik</h2>
+                <p style="font-size: 0.85em; font-style: italic; color: #888; margin-bottom: 1.5em;">Iterative AI-Coding-Automation</p>
+                <div class="highlight-box" style="margin-bottom: 1em;">
+                    <h3 style="color: #42b883; margin-bottom: 0.5em;">Das Konzept</h3>
+                    <pre style="background: #1e1e1e; padding: 1em; border-radius: 8px; overflow-x: auto;"><code style="color: #ffc107; font-size: 0.8em;">while :; do cat PROMPT.md | npx --yes @sourcegraph/amp ; done</code></pre>
+                    <p style="font-size: 0.85em; margin-top: 0.8em; font-style: italic;">
+                        Kontinuierliche Iteration: Prompt → Ausführen → Lernen → Verbessern
+                    </p>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div style="background: rgba(66, 184, 131, 0.2); padding: 1em; border-radius: 8px;">
+                            <h3 style="font-size: 0.9em; color: #42b883;">✅ Einsatzgebiete</h3>
+                            <ul style="font-size: 0.75em; margin-top: 0.5em;">
+                                <li>Prototypen entwickeln</li>
+                                <li>Greenfield-Projekte starten</li>
+                                <li>Neue Programmiersprachen lernen</li>
+                                <li>Experimentieren mit neuen Technologien</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div style="background: rgba(0, 212, 255, 0.2); padding: 1em; border-radius: 8px;">
+                            <h3 style="font-size: 0.9em; color: #00d4ff;">💡 Prinzip</h3>
+                            <ul style="font-size: 0.75em; margin-top: 0.5em;">
+                                <li>Deterministische Fehler</li>
+                                <li>Iteratives Verfeinern der Prompts</li>
+                                <li>Wie Gitarre-Stimmen: Schritt für Schritt besser</li>
+                                <li>Automatisierung repetitiver Aufgaben</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 1em; font-size: 0.7em;">
+                    <a href="https://ghuntley.com/ralph/" style="color: #42b883;">ghuntley.com/ralph/</a>
+                </p>
+                <aside class="notes">
+                    Ralph = While-Loop Technik für iteratives AI-Coding.
+                    Konzept: Kontinuierlich Prompts ausführen und iterativ verbessern.
+                    Gut für Experimente und Prototypen.
+                    Wichtig: Realistische Erwartungen - siehe nächste Folie zu Studien.
+                </aside>
+            </section>
+
+            <!-- Slide 14: Was sagen Studien? -->
+            <section data-transition="slide">
+                <h2>Was sagen Studien zu AI-Coding?</h2>
+                <p style="font-size: 0.85em; font-style: italic; color: #888; margin-bottom: 1em;">
+                    Wichtig: Die meisten Studien untersuchen "Vibe Coding" (Autocomplete), nicht "Agentic Coding"
+                </p>
+                <div class="columns" style="gap: 2em;">
+                    <div class="column">
+                        <div style="background: rgba(66, 184, 131, 0.2); padding: 1.5em; border-radius: 12px; border: 2px solid #42b883;">
+                            <h3 style="font-size: 0.9em; color: #42b883; margin-bottom: 0.8em;">✅ Positive Effekte</h3>
+                            <ul style="font-size: 0.7em; line-height: 1.6;">
+                                <li><strong>GitHub/Accenture 2024:</strong> 73% bleiben besser im Flow</li>
+                                <li><strong>87%</strong> sparen mentale Energie bei repetitiven Tasks</li>
+                                <li><strong>Harness:</strong> 10.6% mehr PRs, 2.4% schnellere Zyklen</li>
+                                <li><strong>60-75%</strong> fühlen sich erfüllter bei der Arbeit</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div style="background: rgba(255, 82, 82, 0.2); padding: 1.5em; border-radius: 12px; border: 2px solid #ff5252;">
+                            <h3 style="font-size: 0.9em; color: #ff5252; margin-bottom: 0.8em;">⚠️ Kritische Befunde</h3>
+                            <ul style="font-size: 0.7em; line-height: 1.6;">
+                                <li><strong>GitClear 2025:</strong> 41% höhere Churn-Rate (mehr Überarbeitung nötig)</li>
+                                <li><strong>Medium 2024:</strong> 19% langsamer, aber glauben 20% schneller!</li>
+                                <li><strong>NYU:</strong> 40% des AI-Codes mit Security-Issues</li>
+                                <li><strong>Perception Gap:</strong> Gefühlte ≠ tatsächliche Produktivität</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 1em;">
+                    <p style="font-size: 0.85em;"><strong>Fazit:</strong> AI-Coding hilft bei Flow & mentaler Entlastung, aber Code-Qualität und tatsächliche Geschwindigkeit müssen kritisch gemessen werden. <em>Deswegen ist der Einsatz von Agentic Coding mit Governance wichtig, dies kann merklich bessere Ergebnisse liefern - aber dazu fehlen noch Langzeitstudien.</em></p>
+                </div>
+                <aside class="notes">
+                    Ausgewogene Darstellung: Positive UND kritische Befunde.
+                    Wichtig: Die meisten Studien zu Copilot/Autocomplete, nicht zu Agentic Tools.
+                    Positiv: Flow, mentale Entlastung, Zufriedenheit.
+                    Kritisch: Code-Qualität, Security, Perception-Gap.
+                    Professionelles Agentic Coding mit Governance könnte besser sein - aber fehlt noch in Studien.
+                </aside>
+            </section>
+
+            <!-- Slide 15: Agentic Governance -->
+            <section data-transition="slide">
+                <h2>Agentic Governance</h2>
+                <p style="font-size: 0.9em; margin-bottom: 1em;">Context definieren, bevor die KI loslegt</p>
+                <div class="key-takeaway">
+                    <ul style="font-size: 0.85em;">
+                        <li><strong>Projekt-Context:</strong> Architektur, Tech-Stack, Patterns</li>
+                        <li><strong>Firma-Context:</strong> Standards, Security-Requirements, Compliance</li>
+                        <li><strong>Development-Context:</strong>
+                            <ul>
+                                <li>Testing: TDD, E2E, Coverage-Ziele</li>
+                                <li>Quality Gates: Linting, Type-Checking, Reviews</li>
+                                <li>Security: OWASP Top 10, Dependencies-Scanning</li>
+                            </ul>
+                        </li>
+                        <li><strong>Review-Prozess:</strong> AI-unterstützt, aber Human approved</li>
+                    </ul>
+                </div>
+                <p class="fragment" style="margin-top: 1em; font-weight: bold; color: #00d4ff;">
+                    → Nicht 100% auf KI verlassen. Mensch bleibt Architekt & Quality Gate.
+                </p>
+                <aside class="notes">
+                    Agentic Governance = Context, Rules, Guards für AI Agents.
+                    Kritisch: Context VOR dem Coding definieren, nicht nachträglich.
+                    Human bleibt verantwortlich für Architektur-Entscheidungen.
+                    AI führt aus, Human entscheidet und reviewed.
+                </aside>
+            </section>
+
+            <!-- Slide 15: KI als Junior-Team-Mitglied -->
+            <section data-transition="slide">
+                <h2>Die richtige Erwartungshaltung</h2>
+                <h3 style="color: #42b883;">KI = Junior-Team-Mitglied (ohne Domain-Wissen)</h3>
+                <div class="columns">
+                    <div class="column">
+                        <h4 style="font-size: 0.8em; color: #00d4ff;">Was KI kann ✓</h4>
+                        <ul style="font-size: 0.7em;">
+                            <li>Boilerplate Code generieren</li>
+                            <li>Refactoring durchführen</li>
+                            <li>Tests schreiben</li>
+                            <li>Dokumentation erstellen</li>
+                            <li>Bugs fixen (mit Context)</li>
+                            <li>Schnell iterieren</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h4 style="font-size: 0.8em; color: #00d4ff;">Was KI nicht kann ✗</h4>
+                        <ul style="font-size: 0.7em;">
+                            <li>Architektur-Entscheidungen</li>
+                            <li>Business-Domain verstehen</li>
+                            <li>Komplexe Bugs debuggen</li>
+                            <li>Trade-offs bewerten</li>
+                            <li>Security-Risiken erkennen</li>
+                            <li>Langfristig denken</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fragment highlight-box" style="margin-top: 1em;">
+                    <p style="font-size: 0.85em;"><strong>Wichtig:</strong> KI ersetzt nicht den Junior, sondern ergänzt das Team!<br>
+                    Senior-Entwickler können sich auf high-value Tasks fokussieren.</p>
+                </div>
+                <aside class="notes">
+                    Richtige Mindset: KI = Junior ohne Domain-Knowledge.
+                    Kann viel ausführen, braucht aber klare Anweisungen und Review.
+                    Ersetzt NICHT Junior-Entwickler (die lernen und wachsen).
+                    Ermöglicht Seniors, sich auf Architektur & komplexe Probleme zu fokussieren.
+                </aside>
+            </section>
+
+            <!-- Slide 16: Best Practices -->
+            <section data-transition="slide">
+                <h2>Best Practices für KI-Entwicklung</h2>
+                <div class="columns" style="gap: 2em; margin-top: 1.5em;">
+                    <div class="column">
+                        <div style="background: rgba(66, 184, 131, 0.2); padding: 1.5em; border-radius: 12px; border: 2px solid #42b883;">
+                            <h3 style="font-size: 1em; color: #42b883; margin-bottom: 1em;">✅ Do's</h3>
+                            <ul style="font-size: 0.75em; line-height: 1.6;">
+                                <li><strong>Context first:</strong> Detaillierte Projektbeschreibung</li>
+                                <li><strong>Iterativ entwickeln:</strong> Kleine Schritte, häufiges Feedback</li>
+                                <li><strong>Testing automatisieren:</strong> TDD mit KI-Unterstützung</li>
+                                <li><strong>Code Reviews:</strong> Mensch + KI</li>
+                                <li><strong>Dokumentation:</strong> Prompts und Entscheidungen dokumentieren</li>
+                                <li><strong>Experimentierfreude:</strong> Prototypen schnell erstellen</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div style="background: rgba(255, 82, 82, 0.2); padding: 1.5em; border-radius: 12px; border: 2px solid #ff5252;">
+                            <h3 style="font-size: 1em; color: #ff5252; margin-bottom: 1em;">❌ Don'ts</h3>
+                            <ul style="font-size: 0.75em; line-height: 1.6;">
+                                <li><strong>Blind vertrauen:</strong> KI-Ergebnisse immer prüfen</li>
+                                <li><strong>Ohne Context:</strong> Keine detaillierten Anforderungen</li>
+                                <li><strong>Production direkt:</strong> Ohne Testing/QA</li>
+                                <li><strong>Security ignorieren:</strong> KI kennt nicht alle Risiken</li>
+                                <li><strong>Domain-Wissen:</strong> KI hat kein Fachwissen</li>
+                                <li><strong>Komplexität unterschätzen:</strong> Echte Projekte brauchen Struktur</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Praktische Do's und Don'ts zusammenfassen.
+                    Context first ist das wichtigste Do.
+                    Blind vertrauen ist das größte Don't.
+                    Balance zwischen Experimentierfreude und professioneller Struktur.
+                </aside>
+            </section>
+
+            <!-- Slide 17: Key Takeaways -->
+            <section data-transition="zoom">
+                <h2>Key Takeaways</h2>
+                <div class="key-takeaway">
+                    <ol style="font-size: 0.85em;">
+                        <li class="fragment"><strong>Context > Code</strong> - Dokumentation von Prompts & Context ist wertvoller als generierter Code</li>
+                        <li class="fragment"><strong>Evolution verstehen</strong> - Von Vibe Coding zu Agentic Coding für Production-Quality</li>
+                        <li class="fragment"><strong>Tools nutzen</strong> - XaresAICoder, Claude Code & Co für professionelle Workflows</li>
+                        <li class="fragment"><strong>Governance etablieren</strong> - Context, Tests, Quality Gates VOR dem Coding definieren</li>
+                        <li class="fragment"><strong>Richtige Erwartung</strong> - KI als Junior-Team-Member, nicht als Ersatz für Entwickler</li>
+                        <li class="fragment"><strong>Experimentieren</strong> - Sandbox-Umgebungen nutzen, um sicher zu experimentieren</li>
+                    </ol>
+                </div>
+                <p class="fragment" style="margin-top: 1em; text-align: center; font-size: 1.1em; color: #00d4ff;">
+                    <strong>→ Teams für das "Agentic Age" rüsten</strong>
+                </p>
+                <aside class="notes">
+                    Zusammenfassung der wichtigsten Punkte.
+                    Betonen: Dies ist kein Hype, sondern fundamentaler Shift in der Entwicklung.
+                    Teams die jetzt lernen, werden massiven Produktivitäts-Vorteil haben.
+                </aside>
+            </section>
+
+            <!-- Slide 17: Q&A -->
+            <section class="center-content" data-transition="zoom">
+                <h2>Fragen & Diskussion</h2>
+                <div style="margin: 2em 0;">
+                    <p style="font-size: 1.2em; color: #00d4ff;">Lassen Sie uns diskutieren!</p>
+                </div>
+                <div class="contact-info">
+                    <p><strong>Frederik Wystup</strong></p>
+                    <p>MeiLuft GmbH & Co. KG</p>
+                    <p style="margin-top: 1em;">
+                        GitHub: <a href="https://github.com/dg1001" style="color: #42b883;">github.com/dg1001</a><br>
+                        XaresAICoder: <a href="https://github.com/dg1001/xaresaicoder" style="color: #42b883;">github.com/dg1001/xaresaicoder</a><br>
+                        hn-gems: <a href="https://github.com/DG1001/hn-gems" style="color: #42b883;">github.com/DG1001/hn-gems</a>
+                    </p>
+                </div>
+                <aside class="notes">
+                    Q&A Session. Typische Fragen erwarten:
+                    - Kosten von AI-Tools?
+                    - Security-Bedenken?
+                    - Wie anfangen in bestehenden Teams?
+                    - Welches Tool für welchen Use-Case?
+                    - Wie Context-Dokumentation strukturieren?
+                </aside>
+            </section>
+
+            <!-- Slide 18: Thank You -->
+            <section class="center-content" data-transition="zoom">
+                <h1>Vielen Dank!</h1>
+                <p style="font-size: 1.2em; margin-top: 2em; color: #42b883;">
+                    Viel Erfolg beim Experimentieren mit AI-Coding!
+                </p>
+                <p style="font-size: 0.8em; margin-top: 3em; color: #888;">
+                    Software Alliance Stuttgart Chapter Meeting<br>
+                    November 2025
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/zoom/zoom.js"></script>
+
+    <script>
+        // Initialize Reveal.js
+        Reveal.initialize({
+            hash: true,
+            slideNumber: 'c/t',
+            showSlideNumber: 'all',
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+
+            // Progress bar
+            progress: true,
+
+            // Controls
+            controls: true,
+            controlsTutorial: true,
+
+            // Navigation
+            keyboard: true,
+            touch: true,
+
+            // Code highlighting
+            highlight: {
+                highlightOnLoad: true,
+                escapeHTML: true
+            },
+
+            // Plugins
+            plugins: [
+                RevealNotes,
+                RevealHighlight,
+                RevealZoom
+            ],
+
+            // Responsive sizing
+            width: 1920,
+            height: 1080,
+            margin: 0.04,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+
+        // Add custom keyboard shortcuts
+        Reveal.addKeyBinding({
+            keyCode: 70, // F key
+            key: 'F',
+            description: 'Toggle fullscreen'
+        }, () => {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                document.documentElement.requestFullscreen();
+            }
+        });
+
+        // Log presentation info on load
+        console.log('Presentation loaded successfully!');
+        console.log('Total slides:', Reveal.getTotalSlides());
+        console.log('Press "S" to open speaker notes view');
+        console.log('Press "F" to toggle fullscreen');
+        console.log('Press "ESC" for slide overview');
+    </script>
+</body>
+</html>

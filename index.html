@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-based Software Development - Status Quo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1e3f 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #e8e8e8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #00d4ff;
+            margin-bottom: 0.5em;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #888;
+            margin-bottom: 3em;
+        }
+
+        .language-selection {
+            display: flex;
+            gap: 2em;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .language-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #00d4ff;
+            border-radius: 16px;
+            padding: 3em 2.5em;
+            width: 300px;
+            text-decoration: none;
+            color: #e8e8e8;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .language-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .language-card .flag {
+            font-size: 5em;
+            margin-bottom: 0.3em;
+            display: block;
+        }
+
+        .language-card .language-name {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #00d4ff;
+            margin-bottom: 0.3em;
+        }
+
+        .language-card .language-subtitle {
+            font-size: 1em;
+            color: #888;
+        }
+
+        .footer {
+            margin-top: 4em;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .footer a {
+            color: #42b883;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #35a372;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .language-card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI-based Software Development</h1>
+        <p class="subtitle">Status Quo | From Vibe Coding to the Agentic Age</p>
+
+        <div class="language-selection">
+            <a href="presentation.html" class="language-card">
+                <span class="flag">🇩🇪</span>
+                <div class="language-name">Deutsch</div>
+                <div class="language-subtitle">Deutsche Version</div>
+            </a>
+
+            <a href="presentation_en.html" class="language-card">
+                <span class="flag">🇬🇧</span>
+                <div class="language-name">English</div>
+                <div class="language-subtitle">English Version</div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>Frederik Wystup | MeiLuft GmbH & Co. KG</p>
+            <p style="margin-top: 0.5em;">
+                Software Alliance Chapter Meeting Stuttgart
+            </p>
+            <p style="margin-top: 1em;">
+                <a href="https://github.com/dg1001/xaresaicoder" target="_blank">XaresAICoder</a> |
+                <a href="https://github.com/DG1001/hn-gems" target="_blank">hn-gems</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
